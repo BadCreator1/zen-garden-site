@@ -3,4 +3,3 @@ bin
 appsettings.json
 *.db
 *.rdb
-node_modules
