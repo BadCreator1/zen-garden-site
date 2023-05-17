@@ -3,35 +3,4 @@ bin
 appsettings.json
 *.db
 *.rdb
-# .NET Core NuGet packages
-/packages/
-
-# Visual Studio files
-.vs/
-
-# Angular generated files
-/dist/
-/node_modules/
-
-# Compiled JavaScript
-*.js
-
-# Source maps for compiled files
-*.js.map
-
-# Compiled CSS
-*.css
-
-# TypeScript build
-*.tsbuildinfo
-
-# Angular service worker and generated files
-ngsw.json
-/service-worker.js
-
-# Environment config file
-/src/environments/environment.ts
-
-# IDE-specific files (optional)
-.idea/
-.vscode/
+node_modules

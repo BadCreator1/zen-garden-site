@@ -18,10 +18,11 @@ namespace API.Helpers
 
         public string Resolve(Post source, PostDto destination, string destMember, ResolutionContext context)
         {
-            if(!string.IsNullOrEmpty(source.ImageUrl)){
+            if(!string.IsNullOrEmpty(source.ImageUrl) && !source.ImageUrl.Contains("http")){
                 return _config["ApiUrl"] + source.ImageUrl;
             }
-            return null;
+            return source.ImageUrl;
         }
+      
     }
 }

@@ -50,5 +50,18 @@ namespace Infrastructure.Data
             _context.Set<T>().Entry(entity).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+           return await ApplySpecification(spec).CountAsync();
+        }
+
+        public async Task<T> AddEntity(T entity)
+        {
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            var id = entity.Id;
+            return entity;
+        }
     }
 }

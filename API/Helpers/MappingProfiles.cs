@@ -17,14 +17,21 @@ namespace API.Helpers
              .ForMember(d => d.PostId, o => o.MapFrom(s => s.Post.Id));
 
             CreateMap<Commentary, CommentaryDto>()
-            .ForMember(d => d.UserId, o => o.MapFrom(s => s.AppUser.Id))
-            .ForMember(d => d.PostId, o => o.MapFrom(s => s.Post.Id));
+            .ForMember(d => d.AppUserId, o => o.MapFrom(s => s.AppUser.Id))
+            .ForMember(d => d.PostId, o => o.MapFrom(s => s.Post.Id))
+            .ForMember(d => d.UserName, o => o.MapFrom(s => s.AppUser.DisplayName))
+            .ForMember(d => d.AvatarUrl, o => o.MapFrom(s => s.AppUser.AvatarUrl));
+
+            CreateMap<CommentaryDto, Commentary>();
+            
 
             CreateMap<Post, PostDto>()
              .ForMember(d => d.ImageUrl, o => o.MapFrom<PostUrlResolver>())
             .ForMember(d => d.UserId, o => o.MapFrom(s => s.AppUser.Id));
 
-            CreateMap<PostDto, Post>();
+            CreateMap<PostDto, Post>()
+             .ForMember(d => d.ImageUrl, o => o.MapFrom<PostDtoUrlResolver>());
+
             CreateMap<BlockDto, Block>();
 
         }

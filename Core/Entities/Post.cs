@@ -9,10 +9,12 @@ namespace Core.Entities
     {
         public string? Title { get; set; }
         public string? ImageUrl { get; set; }
+        public string? AppUserId { get; set; }
         public AppUser? AppUser { get; set; }
         public List<Block>? Blocks { get; set; }
         public List<Commentary>? Commentaries { get; set; }
         public int Views { get; set; }
-
+        public string? jsonDoc { get; set; }
+        public string? Description { get; set; }
     }
 }
