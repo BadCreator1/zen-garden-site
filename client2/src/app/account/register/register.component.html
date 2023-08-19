@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h2 class="header"><span class="underline">Registration</span> </h2>
+    <div class="row">
+        <div class="col-6">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="w-100 mb-4">
+                    <input class="text-input" placeholder="Nickname" value="Sushi" formControlName="displayName">
+                </div>
+                <div class="w-100 mb-4">
+                    <input formControlName="email" type="email" id="inputEmail" class="text-input" placeholder="Email address"
+                        required="">
+                </div>
+                <div class="w-100 mb-4">
+                    <input formControlName="password" type="password" id="inputPassword" class="text-input" placeholder="Password"
+                        required="">
+                </div>
+                <button type="submit" class="flat-button">Sign in</button>
+            </form>
+        </div>
+        <div class="col-6 ">
+            <img [src]="croppedImage" class="image-container" />
+            <app-crop-image (onImageCropped)="onImageCropped($event)"></app-crop-image>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,7 @@ namespace Core.Specifications
     {
         public LatestPostsSpec(){
             AddOrderBy(p => p.Views);
-            ApplyPaging(0, 10);
+            ApplyPaging(0, 4);
         }
     }
 }

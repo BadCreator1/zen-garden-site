@@ -1,0 +1,38 @@
+<div class="container" *ngIf="comments">
+    <h2> <span class="underline">Commentaries</span> </h2>
+    <div class="d-flex my-3 w-100" *ngFor="let item of comments">
+        <div class="mx-2 avatar-container">
+            <img class="avatar" src="{{item.avatarUrl}}" alt="" (error)="handleMissingImage($event)" >
+        </div>
+        <div class="d-flex flex-column flex-grow-1">
+            <h4 class="header d-flex justify-content-between align-items-center">
+                {{item.userName}} 
+                <div *ngIf="item.appUserId == userId">
+                      <button class="ms-0 icon-small flat-button" (click)="editClicked(item)" aria-label="Edit Comment">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <button class="ms-0 icon-small flat-button button-accent" (click)="deleteClicked(item.id)" aria-label="Delete Comment">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                </div>
+            </h4>
+            <div>{{item.message}}</div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="(currentUser$ | async) as user" class="container mt-4">
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="d-flex flex-column align-items-start">
+        <input type="hidden" formControlName="id">
+        <input type="hidden" formControlName="appUserId">
+        <input type="hidden" formControlName="postId">
+        <textarea formControlName="message" class="w-100 form-control" rows="3"></textarea>
+        <button type="submit" class="my-1 flat-button" >Comment</button>
+    </form>
+</div>
+
+<div class="d-flex justify-content-center">
+    <app-pager [totalCount]="totalCount" [pageSize]="commentParams.pageSize" [pageNumber]="commentParams.PageIndex"
+        (pageChanged)="onPageChanged($event)">
+    </app-pager>
+</div>

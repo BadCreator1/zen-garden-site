@@ -1,0 +1,37 @@
+.active{
+    background: rgba(0,0,0,.2);
+}
+.avatar{
+    height: 32px;
+}
+
+.navbar-spacer {
+    flex: 1 1 auto;
+  }
+
+.wide{
+    width: 200px;
+}
+
+.icon-small{
+    transform: scale(0.8);
+}
+.pointer{
+    cursor: pointer;
+}
+
+.avatar-container{
+    
+    height: 100%; 
+    background-image: url(../../../assets/user.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.main-content{
+    background-color: #F5F5F5;
+}
+.fixed-navbar{
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}

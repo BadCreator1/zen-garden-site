@@ -4,3 +4,44 @@ appsettings.json
 *.db
 *.rdb
 node_modules
+.vs
+
+# Node.js / NPM
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled output
+/dist/
+/dist-test/
+/tmp/
+/out-tsc/
+
+# Dependencies
+/.classpath
+/.project
+/.settings/
+/.factorypath
+
+# IDE specific
+.idea/
+.vscode/
+
+# Compiled Sass
+*.css
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+/.editorconfig
+/.sourcemaps
+/.vscode/
+.angular.json.user
+
+# Cache and saved data
+cache/

@@ -1,0 +1,31 @@
+<div class="container news-container" *ngIf="post">
+    <div class="form-check form-switch" *ngIf="isAdmin" >
+        <!-- <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+            (change)="editChange($event)" checked> -->
+            <mat-slide-toggle (change)="editChange($event)" [(ngModel)]="isEdit">Edit</mat-slide-toggle>
+        <!-- <label class="form-check-label" for="flexSwitchCheckDefault" >Edit</label> -->
+    </div>
+    <div *ngIf="!isEdit" class="d-flex w-100 justify-content-center">
+        <div class="news-container">
+            <div [innerHTML]="html | sanitizeHtml" class="w-100"></div>
+        </div>
+        
+    </div>
+
+    <div *ngIf="isEdit" class="news-container">
+        <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;"  accept="image/png, image/gif, image/jpeg" >
+        <button type="button"   class="my-2 flat-button" (click)="file.click()">Upload Image</button>
+        <div *ngIf="editor" class="mb-3">
+            <form [formGroup]="form">
+                <div class="NgxEditor__Wrapper">
+                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                    <ngx-editor [editor]="editor" formControlName="editorContent"> </ngx-editor>
+                </div>
+            </form>
+        </div>
+        <button class="flat-button" (click)="onSave()">Save</button>
+        <button class="flat-button button-accent mx-2" (click)="onDelete()">Delete</button>
+    </div>
+    
+    <app-commentaries [postId]="post.id"></app-commentaries>
+</div>

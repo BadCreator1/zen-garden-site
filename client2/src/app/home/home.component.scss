@@ -1,0 +1,16 @@
+.carousel{
+    width: 600px;
+}
+
+div.center-cropped {
+    width:600px;
+    height: 420px;
+    overflow:hidden;
+  }
+  div.center-cropped img {
+    height: 100%;
+    min-width: 100%;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+  }

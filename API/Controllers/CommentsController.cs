@@ -32,7 +32,7 @@ namespace API.Controllers
             var entityPost = new Commentary();
             if (comment.Id > 0)
             {
-                var spec = new CommentsByPostIdSpec(comment.Id);
+                var spec = new CommentsByPostIdSpec((int)comment.Id);
                 entityPost = await this._commRepo.GetEntityWithSpec(spec);
                 _mapper.Map<CommentaryDto, Commentary>(comment, entityPost);
                 await _commRepo.UpdateEntity(entityPost);
@@ -61,6 +61,13 @@ namespace API.Controllers
 
             return Ok(new Pagination<CommentaryDto>(value.PageIndex,
              value.PageSize, totalItems, data));
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteComment(int id){
+            var comment = await this._commRepo.GetByIdAsync(id);
+            await this._commRepo.DeleteEntity(comment);
+            return Ok(comment);
         }
     }
 }

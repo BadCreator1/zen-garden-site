@@ -1,0 +1,27 @@
+<div class="container" *ngIf="posts.length > 0">
+    <div class="carousel">
+        <div *ngFor="let post of posts; let i = index" >
+            <div class="slide-container active" *ngIf="i==activeSlideIndex" >
+                <!-- [class.active]="i==activeSlideIndex" -->
+                <div class="center-cropped">
+                    <img [src]="post.imageUrl" alt="" />
+                </div>
+                <div class="carousel-caption d-flex justify-content-center align-items-center flex-column">
+                    <h4>{{post.title}}</h4>
+                    <p> {{(post.description.length > 100)? (post.description |
+                        slice:0:100)+'...':(post.description)}}</p>
+                </div>
+            </div>
+        </div>
+        <button color="primary" class="carousel-btn-left flat-button" (click)="carouselBtnClicked()"
+            aria-label="Previous slide">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button color="primary" class="carousel-btn-right flat-button" (click)="carouselBtnClicked(true)"
+            aria-label="Previous slide">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+
+
+</div>

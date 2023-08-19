@@ -1,0 +1,18 @@
+<div class="container" *ngIf="posts.length>0">
+   
+    <div class="d-flex mb-4 w-100" *ngFor="let post of posts" [routerLink]="['/news/'+post.id]">
+        <div class="w-100 custom-card">
+            <div class="d-flex">
+                <div class="center-cropped me-2">
+                    <img [src]="post.imageUrl" alt="" />
+                </div>
+                <div class="mt-4 p-2">
+                    <h4 class="accent">{{post.title}}</h4>
+                    <p> {{(post.description.length > descriptionLength)? (post.description |
+                        slice:0:descriptionLength)+'...':(post.description)}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

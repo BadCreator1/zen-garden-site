@@ -1,0 +1,55 @@
+
+<mat-toolbar color="white" class="fixed-navbar">
+  <mat-toolbar-row class="container">
+    <!-- <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <h4><span [routerLink]="['/']" class="pointer"><span class="black-accent">Zen</span> garden</span></h4> 
+    <span class="navbar-spacer"></span>
+    <div fxShow="true" fxHide.lt-md class="d-flex align-items-center">
+      <a class="flat-button button-white" [routerLink]="['/news']" [routerLinkActive]="['active']">News</a>
+      <div class="d-flex align-items-center" *ngIf="(currentUser$ | async) == null">
+        <a class="flat-button button-white" [routerLink]="['/account/login']" [routerLinkActive]="['active']">Login</a>
+        <a class="flat-button button-white" *ngIf="(currentUser$ | async) == null" [routerLink]="['/account/register']"
+          [routerLinkActive]="['active']">Register</a>
+      </div>
+
+      <div class="d-flex align-items-center ms-4" *ngIf="(currentUser$ | async) as user">
+        <div class="avatar-container">
+          <img [src]="user.avatarUrl" class="avatar" (error)="handleMissingImage($event)">
+        </div>
+        
+        <span>{{ user.displayName }} </span>
+        <button class="flat-button button-white d-flex align-items-center icon-small" (click)="logout()" aria-label="Logout">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container fxFlexFill>
+  <!-- <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <div class="d-flex align-items-center" mat-button *ngIf="(currentUser$ | async) as user">
+        <img [src]="user.avatarUrl" class="avatar">
+        <span> {{ user.displayName }} </span>
+        <button class="ms-2 icon-small" mat-mini-fab (click)="logout()" aria-label="Logout" color="primary">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+        
+      </div>
+
+      <a mat-list-item [routerLink]="['/news']" href="#" [routerLinkActive]="['active']">News</a>
+      <a mat-list-item [routerLink]="['/account/login']" href="#" [routerLinkActive]="['active']">Login</a>
+      <a mat-list-item *ngIf="(currentUser$ | async) == null" [routerLink]="['/account/register']" href="#"
+        [routerLinkActive]="['active']">Register</a>
+      <a (click)="sidenav.toggle()" href="" class="wide" mat-list-item>Close</a>
+    </mat-nav-list>
+  </mat-sidenav> -->
+  <mat-sidenav-content fxFlexFill class="main-content">
+
+    
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

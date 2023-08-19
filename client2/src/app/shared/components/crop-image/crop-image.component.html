@@ -1,0 +1,5 @@
+<div class="mb-3">
+    <mat-label for="formFile" class="form-label mx-3">Pick avatar image</mat-label>
+    <input  hidden  (change)="fileChangeEvent($event)" type="file" id="formFile" #formFile>
+    <button type="button" class="flat-button button-accent" (click)="formFile.click()">Choose File</button>
+  </div>
