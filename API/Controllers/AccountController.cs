@@ -60,8 +60,6 @@ namespace API.Controllers
             var isAdmin = false;
             if (roles.Contains("Administrator"))
             {
-                // var role = await _roleManager.FindByNameAsync("Administrator");
-                //  await _userManager.AddToRoleAsync(user, role.Name);
                 isAdmin = true;
             }
             return new UserDto
@@ -73,13 +71,6 @@ namespace API.Controllers
                 isAdmin = isAdmin
             };
         }
-
-        // [HttpGet("isadmin")]
-        // [Authorize]
-        // public async Task<ActionResult<UserDto>> CheckIfAdmin(){
-        //     var user = await _userManager.FindByEmailFromClaimsPrincipal(HttpContext.User);
-        //    return Ok(User.IsInRole("Administrator"));
-        // }
 
         [HttpGet("emailexists")]
         public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)

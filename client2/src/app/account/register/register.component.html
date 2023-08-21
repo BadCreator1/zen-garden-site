@@ -4,15 +4,51 @@
         <div class="col-6">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="w-100 mb-4">
-                    <input class="text-input" placeholder="Nickname" value="Sushi" formControlName="displayName">
+                    <input class="text-input" placeholder="Nickname" formControlName="displayName">
+                    <div *ngIf="registerForm.controls['displayName'].invalid 
+                        && (registerForm.controls['displayName'].dirty 
+                        || registerForm.controls['displayName'].touched)" class="alert">
+                        <div
+                            *ngIf="registerForm.controls['displayName'].errors && registerForm.controls['displayName'].errors['required']">
+                            Please enter username
+                        </div>
+                        <div
+                            *ngIf="registerForm.controls['displayName'].errors && registerForm.controls['displayName'].errors['pattern']">
+                            Username must contain at least 6 symbols and don't contain spaces
+                        </div>
+                    </div>
                 </div>
                 <div class="w-100 mb-4">
-                    <input formControlName="email" type="email" id="inputEmail" class="text-input" placeholder="Email address"
-                        required="">
+                    <input formControlName="email" type="email" id="inputEmail" class="text-input"
+                        placeholder="Email address" required="">
+                    <div *ngIf="registerForm.controls['email'].invalid 
+                        && (registerForm.controls['email'].dirty 
+                        || registerForm.controls['email'].touched)" class="alert">
+                        <div
+                            *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].errors['required']">
+                            Please enter email
+                        </div>
+                        <div
+                            *ngIf="registerForm.controls['email'].errors && registerForm.controls['email'].errors['pattern']">
+                            Please enter valid email
+                        </div>
+                    </div>
                 </div>
                 <div class="w-100 mb-4">
-                    <input formControlName="password" type="password" id="inputPassword" class="text-input" placeholder="Password"
-                        required="">
+                    <input formControlName="password" type="password" id="inputPassword" class="text-input"
+                        placeholder="Password" required="">
+                        <div *ngIf="registerForm.controls['password'].invalid 
+                        && (registerForm.controls['password'].dirty 
+                        || registerForm.controls['password'].touched)" class="alert">
+                        <div
+                            *ngIf="registerForm.controls['password'].errors && registerForm.controls['password'].errors['required']">
+                            Please enter Password
+                        </div>
+                        <div
+                            *ngIf="registerForm.controls['password'].errors && registerForm.controls['password'].errors['pattern']">
+                            Username must contain at least 6 symbols, 1 digit, 1 special character and one capital letter
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="flat-button">Sign in</button>
             </form>

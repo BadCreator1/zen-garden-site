@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent {
   public loginForm: FormGroup = new FormGroup({
+   
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
@@ -22,10 +23,10 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
-    this._accountService.login(this.loginForm.value).subscribe(response => {
-      console.log(response);
-      console.log(this._accountService.currentUser$);
+
+    if(this.loginForm.valid){
+       this._accountService.login(this.loginForm.value).subscribe(response => {
+      
       this._snackBar.open("Login Successfully!", "Ok");
       
       this._router.navigateByUrl("/news").then(() => {
@@ -36,5 +37,10 @@ export class LoginComponent {
       console.log(error);
       
     } )
+    }
+    else{
+
+    }
+   
   }
 }

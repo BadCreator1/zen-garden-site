@@ -33,7 +33,7 @@ export class CarouselComponent {
   getPopularPosts() {
     this._homeService.GetPopularPosts().subscribe(response => {
       console.log(response);
-      this.posts = response.reverse();
+      this.posts = response;
       if (this.posts.length > 0) {
         this.activePost = this.posts[0];
       }
